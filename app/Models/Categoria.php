@@ -12,8 +12,8 @@ class Categoria extends Model
     protected $table = 'categoria';
     protected $primaryKey = 'cod_categoria';
 
-    public function libros()
+    public function libro()
     {
-    	return $this->hasMany(Libro::class,'cod_libro');
+    	return $this->hasOne(Libro::class,'cod_libro','cod_categoria');
     }
 }

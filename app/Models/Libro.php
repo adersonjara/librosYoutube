@@ -15,7 +15,7 @@ class Libro extends Model
     // Un libro solo puede tener una cataegoría
     public function categoria()
     {
-    	return $this->belongsTo(Categoria::class,'cod_categoria');
+    	return $this->belongsTo(Categoria::class,'cod_categoria','cod_libro');
     }
 
         public function autores()

@@ -17,7 +17,14 @@ class CategoriaSeeder extends Seeder
     {
         $categoria =  new Categoria();
         $categoria->titulo = 'Novelas';
-        $categoria->cod_libro = 1;
+        $categoria->save();
+
+        $categoria =  new Categoria();
+        $categoria->titulo = 'Biografías';
+        $categoria->save();
+
+        $categoria =  new Categoria();
+        $categoria->titulo = 'Científicos';
         $categoria->save();
     }
 }

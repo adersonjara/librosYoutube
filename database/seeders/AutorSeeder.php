@@ -20,8 +20,8 @@ class AutorSeeder extends Seeder
         $autor->sexo = 'M';
         $autor->save();
 
-        $autor->libros()->attach(1);
-        $autor->libros()->attach(2);
+        // $autor->libros()->attach(1);
+        // $autor->libros()->attach(2);
 
         $autor = new Autor();
         $autor->nombres = 'Ricardo 2';
@@ -29,6 +29,6 @@ class AutorSeeder extends Seeder
         $autor->sexo = 'M';
         $autor->save();
 
-        $autor->libros()->attach(3);
+        // $autor->libros()->attach(3);
     }
 }

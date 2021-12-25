@@ -15,9 +15,10 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         // AsignarAutorSeeder, no se usa.
+        $this->call(CategoriaSeeder::class);
+        $this->call(AutorSeeder::class);
         $this->call(LibroSeeder::class);
-        //$this->call(CategoriaSeeder::class);
-        //$this->call(AutorSeeder::class);
-        //$this->call(AsignarAutorSeeder::class);
+        
+        $this->call(AsignarAutorSeeder::class);
     }
 }
