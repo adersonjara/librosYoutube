@@ -20,6 +20,6 @@ class Libro extends Model
 
         public function autores()
     {
-        return $this->belongsToMany(Autor::class,'asignar_autor','cod_libro','cod_autor');
+        return $this->belongsToMany(Autor::class,'asignar_autor','cod_libro','cod_autor')->withTimestamps();
     }
 }
