@@ -15,16 +15,19 @@ class CategoriaSeeder extends Seeder
      */
     public function run()
     {
-        $categoria =  new Categoria();
-        $categoria->titulo = 'Novelas';
-        $categoria->save();
+        $cantidadCategorias = 5;
 
-        $categoria =  new Categoria();
-        $categoria->titulo = 'Biografías';
-        $categoria->save();
+        Categoria::factory($cantidadCategorias)->create();
+        // $categoria =  new Categoria();
+        // $categoria->titulo = 'Novelas';
+        // $categoria->save();
 
-        $categoria =  new Categoria();
-        $categoria->titulo = 'Científicos';
-        $categoria->save();
+        // $categoria =  new Categoria();
+        // $categoria->titulo = 'Biografías';
+        // $categoria->save();
+
+        // $categoria =  new Categoria();
+        // $categoria->titulo = 'Científicos';
+        // $categoria->save();
     }
 }

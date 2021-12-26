@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CategoriaSeeder::class);
         $this->call(AutorSeeder::class);
         $this->call(LibroSeeder::class);
-        
-        $this->call(AsignarAutorSeeder::class);
+        //$this->call(AsignarAutorSeeder::class);
     }
 }
