@@ -14,6 +14,6 @@ class Categoria extends Model
 
     public function libros()
     {
-    	return $this->hasMany(Libro::class,'cod_libro','cod_categoria');
+    	return $this->belongsToMany(Libro::class,'asignar_categoria','cod_categoria','cod_libro')->withTimestamps();
     }
 }

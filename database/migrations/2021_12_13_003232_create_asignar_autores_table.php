@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAsignarAutorTable extends Migration
+class CreateAsignarAutoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateAsignarAutorTable extends Migration
      */
     public function up()
     {
-        Schema::create('asignar_autor', function (Blueprint $table) {
-            $table->id();
+        Schema::create('asignar_autores', function (Blueprint $table) {
+            //$table->id();
             $table->unsignedInteger('cod_libro');
             $table->foreign('cod_libro')->references('cod_libro')->on('libro')->onDelete('cascade');
             $table->unsignedInteger('cod_autor');

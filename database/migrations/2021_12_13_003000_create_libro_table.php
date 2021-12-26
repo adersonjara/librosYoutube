@@ -18,11 +18,11 @@ class CreateLibroTable extends Migration
             $table->string('titulo',100);
             $table->string('descripcion',200)->nullable();
             $table->string('idioma',100);
-            $table->dateTime('fecha');
-            $table->integer('cod_categoria')->unsigned();
+            $table->dateTime('fecha_publicacion');
             $table->timestamps();
             
-            $table->foreign('cod_categoria')->references('cod_categoria')->on('categoria');
+            /*$table->integer('cod_categoria')->unsigned();
+            $table->foreign('cod_categoria')->references('cod_categoria')->on('categoria');*/
 
         });
     }

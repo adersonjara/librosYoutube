@@ -16,9 +16,9 @@ class CreateCategoriaTable extends Migration
         Schema::create('categoria', function (Blueprint $table) {
             $table->increments('cod_categoria');
             $table->string('titulo',100);
-            //$table->integer('cod_libro')->unsigned();
             $table->timestamps();
-
+            
+            //$table->integer('cod_libro')->unsigned();
             //$table->foreign('cod_libro')->references('cod_libro')->on('libro');
         });
     }

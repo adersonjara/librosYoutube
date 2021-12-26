@@ -12,15 +12,15 @@ class Libro extends Model
     protected $table = 'libro';
     protected $primaryKey = 'cod_libro';
 
-    // Un libro solo puede tener una cataegoría
-    public function categoria()
-    {
-    	return $this->belongsTo(Categoria::class,'cod_categoria','cod_libro');
-    }
-
     public function autores()
     {
         return $this->belongsToMany(Autor::class,'asignar_autor','cod_libro','cod_autor')
+        ->withTimestamps();
+    }
+
+    public function categorias()
+    {
+        return $this->belongsToMany(Categoria::class,'asignar_categoria','cod_libro','cod_categoria')
         ->withTimestamps();
     }
 }
