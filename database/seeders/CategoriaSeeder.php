@@ -15,9 +15,19 @@ class CategoriaSeeder extends Seeder
      */
     public function run()
     {
-        $cantidadCategorias = 5;
 
-        Categoria::factory($cantidadCategorias)->create();
+        // 1.- Seeders
+        $categoria =  new Categoria();
+        $categoria->titulo = 'Ficción Histórica';
+        $categoria->save();
+
+        $categoria =  new Categoria();
+        $categoria->titulo = 'Melodrama';
+        $categoria->save();
+
+        //$cantidadCategorias = 5;
+
+        //Categoria::factory($cantidadCategorias)->create();
         // $categoria =  new Categoria();
         // $categoria->titulo = 'Novelas';
         // $categoria->save();

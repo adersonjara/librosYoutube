@@ -14,7 +14,23 @@ class AutorSeeder extends Seeder
      */
     public function run()
     {
-        $cantidadAutores = 100;
+
+        // 1.- Seeders
+
+        $autor = new Autor();
+        $autor->nombres = 'Ricardo'; // Tradiciones Peruans, Ficción Histórica, Español
+        $autor->apellidos = 'Palma';
+        $autor->sexo = 'M';
+        $autor->save();
+
+        $autor = new Autor();
+        $autor->nombres = 'William';
+        $autor->apellidos = 'Shakespeare'; // Romeo y Julieta, Melodrama, Inglés 
+        $autor->sexo = 'M';
+        $autor->save();
+
+
+        //$cantidadAutores = 100;
 
         //Autor::factory($cantidadAutores)->create();
         // $autor = new Autor();

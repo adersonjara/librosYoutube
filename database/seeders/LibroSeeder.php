@@ -16,13 +16,34 @@ class LibroSeeder extends Seeder
     public function run()
     {
 
-    	$cantidadLibros = 10;
-    	$cantidadAutores = 2;
+    	$libro = new Libro();
+		$libro->titulo = 'Tradiciones Peruanas';
+		$libro->descripcion = 'Conjunto de textos escritos por el peruano Ricardo Palma';
+		$libro->idioma = 'Español';
+		$libro->fecha_publicacion = date('Y-m-d H:i:s');
+		$libro->save();
+
+		$libro->autores()->attach(1);
+		$libro->categorias()->attach(1);
+
+
+		$libro = new Libro();
+		$libro->titulo = 'Romeo y Julieta';
+		$libro->descripcion = 'Es una tragedia y melodrama del dramaturgo inglés William Shakespeare';
+		$libro->idioma = 'Inglés';
+		$libro->fecha_publicacion = date('Y-m-d H:i:s');
+		$libro->save();
+
+		$libro->autores()->attach(2);
+		$libro->categorias()->attach(2);
+
+    	// $cantidadLibros = 10;
+    	// $cantidadAutores = 2;
 
     	//Libro::factory($cantidadLibros)->create();
 
     	/*Forma Nº 1*/
-    	Libro::factory($cantidadLibros)->has(Autor::factory()->count($cantidadAutores),'autores')->create();
+    	// Libro::factory($cantidadLibros)->has(Autor::factory()->count($cantidadAutores),'autores')->create();
 
     	/*Forma Nº 2*/
     	/*$autores = Autor::factory()->count(4)->create();

@@ -14,13 +14,13 @@ class Libro extends Model
 
     public function autores()
     {
-        return $this->belongsToMany(Autor::class,'asignar_autor','cod_libro','cod_autor')
+        return $this->belongsToMany(Autor::class,'asignar_autores','cod_libro','cod_autor')
         ->withTimestamps();
     }
 
     public function categorias()
     {
-        return $this->belongsToMany(Categoria::class,'asignar_categoria','cod_libro','cod_categoria')
+        return $this->belongsToMany(Categoria::class,'asignar_categorias','cod_libro','cod_categoria')
         ->withTimestamps();
     }
 }
