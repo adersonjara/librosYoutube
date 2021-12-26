@@ -17,11 +17,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-
-        Categoria::truncate();
-        Autor::truncate();
-        Libro::truncate();
         // \App\Models\User::factory(10)->create();
         $this->call(CategoriaSeeder::class);
         $this->call(AutorSeeder::class);
