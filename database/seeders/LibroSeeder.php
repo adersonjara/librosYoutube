@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Autor;
+use App\Models\Categoria;
 use App\Models\Libro;
 use Illuminate\Database\Seeder;
 
@@ -16,7 +17,8 @@ class LibroSeeder extends Seeder
     public function run()
     {
 
-    	$libro = new Libro();
+    	// 1.- Seeders
+    	/*$libro = new Libro();
 		$libro->titulo = 'Tradiciones Peruanas';
 		$libro->descripcion = 'Conjunto de textos escritos por el peruano Ricardo Palma';
 		$libro->idioma = 'Español';
@@ -35,12 +37,20 @@ class LibroSeeder extends Seeder
 		$libro->save();
 
 		$libro->autores()->attach(2);
-		$libro->categorias()->attach(2);
+		$libro->categorias()->attach(2);*/
 
-    	// $cantidadLibros = 10;
-    	// $cantidadAutores = 2;
+		/**************************************** FIN DE SEEDER *******************************************/
 
-    	//Libro::factory($cantidadLibros)->create();
+
+		// 2.- Factories
+        $cantidadLibros = 100; 		// 100 + 100 = 200 libros
+    	$cantidadAutores = 3;  		// 30 * 100 = 300  registros tabla pivot Autores
+    	$cantidadCategorias = 3;	// 30 * 100 = 300  registros tabla pivot Categorias
+        Libro::factory($cantidadLibros)->has(Autor::factory()->count($cantidadAutores),'autores')->create();
+        Libro::factory($cantidadLibros)->has(Categoria::factory()->count($cantidadCategorias),'categorias')->create();
+
+        /**************************************** FIN DE FACTORY *******************************************/
+
 
     	/*Forma Nº 1*/
     	// Libro::factory($cantidadLibros)->has(Autor::factory()->count($cantidadAutores),'autores')->create();
@@ -50,42 +60,6 @@ class LibroSeeder extends Seeder
     	Libro::factory($cantidadLibros)->hasAttached($autores,[],'autores')->create();
     	dd($autores);*/
     	
-  //       $libro = new Libro();
-		// $libro->titulo = 'Tradiciones Peruanas I';
-		// $libro->descripcion = 'Contiene una serie de relatos cortos';
-		// $libro->idioma = 'Español';
-		// $libro->fecha = date('Y-m-d H:i:s');
-		// $libro->cod_categoria = 1;
-		// $libro->save();
-
-		// $libro->autores()->attach(1);
-		// $libro->autores()->attach(2);
-
-		// $libro = new Libro();
-		// $libro->titulo = 'Tradiciones Peruanas II';
-		// $libro->descripcion = 'Contiene una serie de relatos cortos';
-		// $libro->idioma = 'Español';
-		// $libro->fecha = date('Y-m-d H:i:s');
-		// $libro->cod_categoria = 1;
-		// $libro->save();
-
-		// $libro = new Libro();
-		// $libro->titulo = 'Tradiciones Peruanas III';
-		// $libro->descripcion = 'Contiene una serie de relatos cortos';
-		// $libro->idioma = 'Español';
-		// $libro->fecha = date('Y-m-d H:i:s');
-		// $libro->cod_categoria = 2;
-		// $libro->save();
-
-		// $libro = new Libro();
-		// $libro->titulo = 'Tradiciones Peruanas V';
-		// $libro->descripcion = 'Contiene una serie de relatos cortos';
-		// $libro->idioma = 'Español';
-		// $libro->fecha = date('Y-m-d H:i:s');
-		// $libro->cod_categoria = 3;
-		// $libro->save();
-
-		// $libro->autores()->attach(1);
-		// $libro->autores()->attach(2);
+  
     }
 }

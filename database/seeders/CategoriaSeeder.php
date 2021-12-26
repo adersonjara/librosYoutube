@@ -17,27 +17,21 @@ class CategoriaSeeder extends Seeder
     {
 
         // 1.- Seeders
-        $categoria =  new Categoria();
+        /*$categoria =  new Categoria();
         $categoria->titulo = 'Ficción Histórica';
         $categoria->save();
 
         $categoria =  new Categoria();
         $categoria->titulo = 'Melodrama';
-        $categoria->save();
+        $categoria->save();*/
 
-        //$cantidadCategorias = 5;
+        /**************************************** FIN DE SEEDER *******************************************/
 
-        //Categoria::factory($cantidadCategorias)->create();
-        // $categoria =  new Categoria();
-        // $categoria->titulo = 'Novelas';
-        // $categoria->save();
 
-        // $categoria =  new Categoria();
-        // $categoria->titulo = 'Biografías';
-        // $categoria->save();
+        // 2.- Factories
+        /*$cantidadCategorias = 5;
+        Categoria::factory($cantidadCategorias)->create();*/
+        /**************************************** FIN DE FACTORY *******************************************/
 
-        // $categoria =  new Categoria();
-        // $categoria->titulo = 'Científicos';
-        // $categoria->save();
     }
 }

@@ -14,7 +14,7 @@ class CategoriaFactory extends Factory
     public function definition()
     {
         return [
-            'titulo' => ucfirst($this->faker->word())
+            'titulo' => $this->faker->name()
         ];
     }
 }

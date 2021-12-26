@@ -14,7 +14,7 @@ class CreateAsignarAutoresTable extends Migration
     public function up()
     {
         Schema::create('asignar_autores', function (Blueprint $table) {
-            //$table->id();
+            $table->id();
             $table->unsignedInteger('cod_libro');
             $table->foreign('cod_libro')->references('cod_libro')->on('libro')->onDelete('cascade');
             $table->unsignedInteger('cod_autor');
