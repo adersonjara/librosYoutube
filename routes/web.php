@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\LibroController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\AutorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,10 @@ use App\Http\Controllers\LibroController;
 });*/
 
 Route::get('/', [LibroController::class, 'index'])->name('libros.index');
+
+Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias.index');
+
+Route::get('/autores', [AutorController::class, 'index'])->name('autores.index');
 
 /*Auth::routes();
 

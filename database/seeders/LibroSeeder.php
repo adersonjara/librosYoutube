@@ -43,7 +43,7 @@ class LibroSeeder extends Seeder
 
 
 		// 2.- Factories
-        $cantidadLibros = 100; 		// 100 + 100 = 200 libros
+        $cantidadLibros = 10; 		// 100 + 100 = 200 libros
     	$cantidadAutores = 3;  		// 30 * 100 = 300  registros tabla pivot Autores
     	$cantidadCategorias = 3;	// 30 * 100 = 300  registros tabla pivot Categorias
         Libro::factory($cantidadLibros)->has(Autor::factory()->count($cantidadAutores),'autores')->create();

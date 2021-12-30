@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <h2>Libros</h2>
+            <h2>&nbsp;</h2>
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>
@@ -25,7 +25,7 @@
                                 {{ substr($libro->descripcion, 0, 50) }} {{ '...' }}
                             </td>
                             <td scope="row">{{ $libro->idioma }}</td>
-                            <td scope="row">{{ $libro->fecha_publicacion }}</td>
+                            <td scope="row">{{ date("d/m/Y", strtotime($libro->fecha_publicacion)); }}</td>
                         </tr>
                     @endforeach
                     </tbody>
