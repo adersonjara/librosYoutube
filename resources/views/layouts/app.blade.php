@@ -18,6 +18,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
+    
 </head>
 <body>
     <div id="app">
@@ -40,13 +42,13 @@
                     <ul class="navbar-nav ms-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('libros.index') }}">{{ __('Libros') }}</a>
+                            <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ route('libros.index') }}">{{ __('Libros') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('categorias.index') }}">{{ __('Categorias') }}</a>
+                            <a class="nav-link {{ request()->is('categorias') ? 'active' : '' }}" href="{{ route('categorias.index') }}">{{ __('Categorias') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('autores.index') }}">{{ __('Autores') }}</a>
+                            <a class="nav-link  {{ request()->is('autores') ? 'active' : '' }}" href="{{ route('autores.index') }}">{{ __('Autores') }}</a>
                         </li>
                         <!-- Authentication Links -->
                         @guest
@@ -86,6 +88,10 @@
         </nav>
 
         <main class="py-4">
+            <h2>&nbsp;</h2>
+            {{-- https://laravel.com/docs/8.x/requests#inspecting-the-request-path --}}
+            {{-- <h1>{{ request()->url() }}</h1> --}}
+            {{-- <h1>{{ request()->is('/') ? 'Estoy en la sección libro' : 'No estoy en la sección libros' }}</h1> --}}
             @yield('content')
         </main>
     </div>

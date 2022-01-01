@@ -1,0 +1,4 @@
+.navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .nav-link.active {
+  /*color:blue;*/
+  border-bottom: 2px solid rgba(0,0,0,0.9);
+}
