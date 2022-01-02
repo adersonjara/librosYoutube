@@ -13,6 +13,7 @@
                 <p>&nbsp;</p>
                 <a class="btn btn-primary btn-sm mb-2" href="{{ route('libros.create') }}"> Agregar Libro</a>
             </div>
+            @if(sizeof($libros) > 0)
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>
@@ -51,6 +52,9 @@
                     {!! $libros->links() !!}
                 </div>
             </div>
+            @else
+                <div class="alert alert-secondary">No se encontraron resultados.</div>
+            @endif
         </div>
     </div>
 </div>
@@ -58,15 +62,15 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
-        /*$(".alert-dismissible").fadeTo(2000, 500).slideUp(500, function(){
+        $(".alert-dismissible").fadeTo(2000, 500).slideUp(500, function(){
             $(".alert-dismissible").alert('close');
-        });*/
+        });
 
-        window.setTimeout(function() {
+        /*window.setTimeout(function() {
             $(".alert").fadeTo(500, 0).slideUp(500, function(){
                 $(this).remove(); 
             });
-        }, 2000);
+        }, 2000);*/
 
     });
 </script>  
