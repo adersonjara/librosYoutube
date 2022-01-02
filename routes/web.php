@@ -21,7 +21,12 @@ use App\Http\Controllers\AutorController;
     return view('welcome');
 });*/
 
-Route::get('/', [LibroController::class, 'index'])->name('libros.index');
+//Route::get('/', [LibroController::class, 'index'])->name('libros.index');
+Route::get('/', function () {
+    return redirect('/libros');
+});
+
+Route::resource('libros', LibroController::class);
 
 Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias.index');
 

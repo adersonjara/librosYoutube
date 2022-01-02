@@ -4,7 +4,6 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <h2>&nbsp;</h2>
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>

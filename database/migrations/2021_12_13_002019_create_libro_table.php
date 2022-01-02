@@ -15,7 +15,7 @@ class CreateLibroTable extends Migration
     {
         Schema::create('libro', function (Blueprint $table) {
             $table->increments('cod_libro');
-            $table->string('titulo',100);
+            $table->string('titulo',100)->unique();
             $table->string('descripcion',200)->nullable();
             $table->string('idioma',100);
             $table->dateTime('fecha_publicacion');

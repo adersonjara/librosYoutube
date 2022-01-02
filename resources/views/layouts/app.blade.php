@@ -23,7 +23,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar fixed-top navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar  navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -42,7 +42,7 @@
                     <ul class="navbar-nav ms-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="{{ route('libros.index') }}">{{ __('Libros') }}</a>
+                            <a class="nav-link {{ request()->is('libros/*') || request()->is('libros')  ? 'active' : '' }}" href="{{ route('libros.index') }}">{{ __('Libros') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('categorias') ? 'active' : '' }}" href="{{ route('categorias.index') }}">{{ __('Categorías') }}</a>
@@ -87,8 +87,8 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            <h2>&nbsp;</h2>
+        <main class="py-5">
+            
             {{-- https://laravel.com/docs/8.x/requests#inspecting-the-request-path --}}
             {{-- <h1>{{ request()->url() }}</h1> --}}
             {{-- <h1>{{ request()->is('/') ? 'Estoy en la sección libro' : 'No estoy en la sección libros' }}</h1> --}}

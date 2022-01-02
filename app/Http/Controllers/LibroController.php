@@ -14,7 +14,7 @@ class LibroController extends Controller
      */
     public function index()
     {
-        $libros = Libro::paginate(10);
+        $libros = Libro::orderBy('cod_libro', 'DESC')->paginate(10);
         return view('libros.index', ['libros' => $libros]);
     }
 
@@ -25,7 +25,8 @@ class LibroController extends Controller
      */
     public function create()
     {
-        //
+        $idiomas = ['Español','Ingles','Chino'];
+        return view('libros.create', ['idiomas' => $idiomas]);
     }
 
     /**
@@ -36,7 +37,26 @@ class LibroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        //dd($request->fecha_publicacion);
+        $request->validate([
+            'titulo' => 'required|unique:libro',
+            'idioma' => 'required',
+            'descripcion' => 'required',
+            'fecha_publicacion' => 'required'
+        ]);
+
+        $fecha = $request->fecha_publicacion;
+
+        $fecha = date_create($fecha);
+        $fecha  = date_format($fecha,"Y-m-d");
+
+        $request['fecha_publicacion'] = $fecha;
+
+        Libro::create($request->all());
+
+        return redirect()->route('libros.index')
+            ->with('success', 'Libro registrado correctamente.');
     }
 
     /**
