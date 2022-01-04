@@ -18,7 +18,7 @@ class CreateLibroTable extends Migration
             $table->string('titulo',100)->unique();
             $table->string('descripcion',200)->nullable();
             $table->string('idioma',100);
-            $table->dateTime('fecha_publicacion');
+            $table->date('fecha_publicacion');
             $table->timestamps();
             
             /*$table->integer('cod_categoria')->unsigned();

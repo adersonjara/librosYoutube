@@ -15,7 +15,8 @@ class LibroController extends Controller
     public function index()
     {
         $libros = Libro::orderBy('cod_libro', 'DESC')->paginate(10);
-        return view('libros.index', ['libros' => $libros]);
+        $idiomas = ['Español','Ingles','Chino'];
+        return view('libros.index', ['libros' => $libros,'idiomas' => $idiomas]);
     }
 
     /**
@@ -46,12 +47,7 @@ class LibroController extends Controller
             'fecha_publicacion' => 'required'
         ]);
 
-        $fecha = $request->fecha_publicacion;
-
-        $fecha = date_create($fecha);
-        $fecha  = date_format($fecha,"Y-m-d");
-
-        $request['fecha_publicacion'] = $fecha;
+        //dd($request->all());
 
         Libro::create($request->all());
 
@@ -78,7 +74,9 @@ class LibroController extends Controller
      */
     public function edit(Libro $libro)
     {
-        //
+        $idiomas = ['Español','Ingles','Chino'];
+        //dd($libro);
+        return view('libros.edit', ['libro' => $libro,'idiomas' => $idiomas]);
     }
 
     /**
@@ -90,7 +88,27 @@ class LibroController extends Controller
      */
     public function update(Request $request, Libro $libro)
     {
-        //
+        $request->validate([
+            'titulo' => 'required|unique:libro,titulo,'.$libro->cod_libro.',cod_libro',
+            'idioma' => 'required',
+            'descripcion' => 'required',
+            'fecha_publicacion' => 'required'
+        ]);
+
+        $libro->fill($request->only([
+            'titulo',
+            'idioma',
+            'descripcion',
+            'fecha_publicacion'
+        ]));
+
+        if ($libro->isClean()) {
+            return back()->with('status', 'Debe realizar al menos un cambio, para actualizar');
+        }
+
+        $libro->update($request->all());
+
+        return back()->with('status', 'Libro Actualizado Correctamente');
     }
 
     /**
@@ -101,6 +119,8 @@ class LibroController extends Controller
      */
     public function destroy(Libro $libro)
     {
-        //
+        $libro->delete();
+
+        return back()->with('status', 'Libro Eliminado Correctamente');
     }
 }

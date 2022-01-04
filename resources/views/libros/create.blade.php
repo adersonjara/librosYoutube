@@ -2,7 +2,6 @@
 
 @section('content')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -42,21 +41,14 @@
                 @enderror
               </div>
               <div class="col-md-6">
-                <label for="date" class="form-label">Fecha de Publicación</label>
-                <div class="input-group date" id="datepicker">
-                    <input type="text" class="form-control" name="fecha_publicacion">
-                    <span class="input-group-append">
-                        <span class="input-group-text bg-white d-block">
-                            <i class="fa fa-calendar"></i>
-                        </span>
-                    </span>
-                </div>
-                @error('fechapublicacion')
+                <label for="fecha_publicacion" class="form-label">Fecha de Publicación</label>
+                <input class="form-control" type="date" name="fecha_publicacion" value="{{old('fecha_publicacion')}}"/>
+                @error('fecha_publicacion')
                     <small class="text-danger" role="alert">
                         {{ $message }}
                     </small>
                 @enderror
-            </div>
+              </div>
               <div class="col-12">
                 <button type="submit" class="btn btn-primary">Guardar</button>
               </div>
@@ -65,19 +57,4 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-
-       // $('#datepicker').datepicker();
-
-        $("#datepicker").datepicker({
-            dateFormat: 'dd/mm/yy',
-            firstDay: 1
-        }).datepicker("setDate", new Date());
-
-    });
-</script>  
 @endsection

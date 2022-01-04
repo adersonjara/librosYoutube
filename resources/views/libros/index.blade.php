@@ -3,6 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        @if (session('status'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
         @if ($message = Session::get('success'))
             <div class="alert alert-success alert-dismissible fade show">
                 {{ $message }}
@@ -18,6 +23,7 @@
                 <table class="table table-hover">
                     <thead>
                     <tr>
+                        <th scope="col">Acciones</th>
                         <th scope="col">#</th>
                         <th scope="col">Título</th>
                         <th scope="col">Descripción</th>
@@ -26,12 +32,26 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <?php
-                        $i = 1;
-                    ?>
                     @foreach ($libros as $libro)
                         <tr>
-                            <td scope="row">{{$i}}</td>
+                            <td>
+                                <a href="{{ route('libros.edit', $libro) }}" class="btn btn-primary btn-sm shadow-none" 
+                                        {{-- target="_blank" --}}
+                                        data-toggle="tooltip" data-placement="top" title="Editar Libro">
+                                    <i class="fa fa-pencil fa-fw text-white"></i></a>
+                                </a>
+                                <form action="{{ route('libros.destroy', $libro) }}" method="POST" class="d-inline-block">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button id="delete" name="delete" type="submit" 
+                                            class="btn btn-danger btn-sm shadow-none" 
+                                            data-toggle="tooltip" data-placement="top" title="Eliminar Libro"
+                                            onclick="return confirm('¿Estás seguro de eliminar?')">
+                                        <i class="fa fa-trash-o fa-fw"></i>
+                                    </button>
+                                </form>
+                            </td>
+                            <td scope="row">{{ $libro->cod_libro }}</td>
                             <td scope="row">{{ $libro->titulo }}</td>
                             <td scope="row">
                                 <em>
@@ -41,9 +61,6 @@
                             <td scope="row">{{ $libro->idioma }}</td>
                             <td scope="row">{{ date("d/m/Y", strtotime($libro->fecha_publicacion)); }}</td>
                         </tr>
-                        <?php
-                            $i++;
-                        ?>
                     @endforeach
                     
                     </tbody>
@@ -66,6 +83,10 @@
             $(".alert-dismissible").alert('close');
         });
 
+        //$('[data-toggle="tooltip"]').tooltip()
+        $('[data-toggle="tooltip"]').tooltip({
+            trigger : 'hover'
+        });
         /*window.setTimeout(function() {
             $(".alert").fadeTo(500, 0).slideUp(500, function(){
                 $(this).remove(); 
