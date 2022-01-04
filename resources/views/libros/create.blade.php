@@ -16,7 +16,7 @@
               @csrf
               <div class="col-md-6">
                 <label for="titulo" class="form-label">Título de Libro</label>
-                <input type="text" class="form-control" id="titulo" name="titulo" value="{{ old('titulo') }}">
+                <input type="text" class="form-control shadow-none" id="titulo" name="titulo" value="{{ old('titulo') }}">
                 @error('titulo')
                     <small class="text-danger" role="alert">
                         {{ $message }}
@@ -25,7 +25,7 @@
               </div>
               <div class="col-md-6">
                 <label for="idioma" class="form-label">Idioma</label>
-                <select id="idioma" class="form-select" name="idioma" value="{{ old('idioma') }}">
+                <select id="idioma" class="form-select shadow-none" name="idioma" value="{{ old('idioma') }}">
                   <option value="" selected>Seleccionar...</option>
                   <option value="{{ $idiomas[0] }}" {{ old('idioma') == $idiomas[0] ? 'selected' : '' }}>{{ $idiomas[0] }}</option>
                   <option value="{{ $idiomas[1] }}" {{ old('idioma') == $idiomas[1] ? 'selected' : '' }}>{{ $idiomas[1] }}</option>
@@ -39,7 +39,7 @@
               </div>
               <div class="col-md-6">
                 <label for="descripcion" class="form-label">Descripción de Libro</label>
-                <textarea class="form-control" name="descripcion" id="descripcion" cols="30" rows="5" value="">{{ old('descripcion') }}</textarea>
+                <textarea class="form-control shadow-none" name="descripcion" id="descripcion" cols="30" rows="5" value="">{{ old('descripcion') }}</textarea>
                 @error('descripcion')
                     <small class="text-danger" role="alert">
                         {{ $message }}
@@ -48,7 +48,7 @@
               </div>
               <div class="col-md-6">
                 <label for="fecha_publicacion" class="form-label">Fecha de Publicación</label>
-                <input class="form-control" type="date" name="fecha_publicacion" value="{{old('fecha_publicacion')}}"/>
+                <input class="form-control shadow-none" type="date" name="fecha_publicacion" value="{{old('fecha_publicacion')}}"/>
                 @error('fecha_publicacion')
                     <small class="text-danger" role="alert">
                         {{ $message }}

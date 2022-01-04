@@ -40,10 +40,10 @@ class LibroController extends Controller
         
         //dd($request->fecha_publicacion);
         $request->validate([
-            'titulo' => 'required|unique:libro',
+            'titulo' => 'required|min:3|max:100|unique:libro',
             'idioma' => 'required',
-            'descripcion' => 'required',
-            'fecha_publicacion' => 'required'
+            'descripcion' => 'required|min:3|max:200',
+            'fecha_publicacion' => 'required|date'
         ]);
 
         //dd($request->all());
@@ -88,10 +88,10 @@ class LibroController extends Controller
     public function update(Request $request, Libro $libro)
     {
         $request->validate([
-            'titulo' => 'required|unique:libro,titulo,'.$libro->cod_libro.',cod_libro',
+            'titulo' => 'required|min:3|max:100|unique:libro,titulo,'.$libro->cod_libro.',cod_libro',
             'idioma' => 'required',
-            'descripcion' => 'required',
-            'fecha_publicacion' => 'required'
+            'descripcion' => 'required|max:200|',
+            'fecha_publicacion' => 'required|date'
         ]);
 
         $libro->fill($request->only([
@@ -102,7 +102,7 @@ class LibroController extends Controller
         ]));
 
         if ($libro->isClean()) {
-            return back()->with('status', 'Debe realizar al menos un cambio, para actualizar');
+            return back()->with('statuswarning', 'Debe realizar al menos un cambio, para actualizar');
         }
 
         $libro->update($request->all());
