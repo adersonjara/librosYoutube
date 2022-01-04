@@ -1,16 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row">
         @if (session('status'))
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
                 {{ session('status') }}
             </div>
         @endif
         <div class="col-md-12">
-
+            <div class="pull-right">
+                <a class="btn btn-primary shadow-none" data-toggle="tooltip" data-placement="top" title="Inicio" href="{{ route('libros.index') }}"> 
+                    <i class="fa fa-home fa-fw"></i> 
+                </a>
+            </div>
+        </div>
+        <div class="col-md-12">
             <form  action="{{ route('libros.update', $libro) }}" method="POST" class="row g-3">
               @csrf
               @method('PUT')
@@ -55,29 +60,12 @@
                     </small>
                 @enderror
               </div>
-              <div class="col-12">
-                <button type="submit" class="btn btn-primary">Guardar</button>
+              <div class="col-md-12">
+                <button type="submit" class="btn btn-success">Actualizar</button>
               </div>
             </form>
 
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-
-        $(".alert-dismissible").fadeTo(2000, 500).slideUp(500, function(){
-            $(".alert-dismissible").alert('close');
-        });
-
-        $('[data-toggle="tooltip"]').tooltip()
-        /*window.setTimeout(function() {
-            $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                $(this).remove(); 
-            });
-        }, 2000);*/
-
-    });
-</script>  
 @endsection

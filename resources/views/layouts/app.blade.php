@@ -97,5 +97,25 @@
             @yield('content')
         </main>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $(".alert-dismissible").fadeTo(2000, 500).slideUp(500, function(){
+                $(".alert-dismissible").alert('close');
+            });
+
+            //$('[data-toggle="tooltip"]').tooltip()
+            $('[data-toggle="tooltip"]').tooltip({
+                trigger : 'hover'
+            });
+            /*window.setTimeout(function() {
+                $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                    $(this).remove(); 
+                });
+            }, 2000);*/
+
+        });
+    </script>  
 </body>
 </html>

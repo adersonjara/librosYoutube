@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row">
         @if (session('status'))
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 {{ session('status') }}
@@ -14,10 +14,13 @@
             </div>
         @endif
         <div class="col-md-12">
-            <div class="col-lg-12 d-flex justify-content-between align-items-center">
-                <p>&nbsp;</p>
-                <a class="btn btn-primary btn-sm mb-2" href="{{ route('libros.create') }}"> Agregar Libro</a>
+            <div class="pull-right">
+                <a class="btn btn-primary shadow-none" data-toggle="tooltip" data-placement="top" title="Agregar Libro" href="{{ route('libros.create') }}"> 
+                    <i class="fa fa-plus"></i>
+                </a>
             </div>
+        </div>
+        <div class="col-md-12">
             @if(sizeof($libros) > 0)
             <div class="table-responsive">
                 <table class="table table-hover">
@@ -35,11 +38,18 @@
                     @foreach ($libros as $libro)
                         <tr>
                             <td>
-                                <a href="{{ route('libros.edit', $libro) }}" class="btn btn-primary btn-sm shadow-none" 
+                                <a href="{{ route('libros.show', $libro) }}" class="btn btn-primary btn-sm shadow-none" 
+                                        {{-- target="_blank" --}}
+                                        data-toggle="tooltip" data-placement="top" title="Ver Libro">
+                                    <i class="fa fa-book fa-fw text-white"></i></a>
+                                </a>
+
+                                <a href="{{ route('libros.edit', $libro) }}" class="btn btn-success btn-sm shadow-none" 
                                         {{-- target="_blank" --}}
                                         data-toggle="tooltip" data-placement="top" title="Editar Libro">
                                     <i class="fa fa-pencil fa-fw text-white"></i></a>
                                 </a>
+                                
                                 <form action="{{ route('libros.destroy', $libro) }}" method="POST" class="d-inline-block">
                                     @method('DELETE')
                                     @csrf
@@ -75,24 +85,4 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-
-        $(".alert-dismissible").fadeTo(2000, 500).slideUp(500, function(){
-            $(".alert-dismissible").alert('close');
-        });
-
-        //$('[data-toggle="tooltip"]').tooltip()
-        $('[data-toggle="tooltip"]').tooltip({
-            trigger : 'hover'
-        });
-        /*window.setTimeout(function() {
-            $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                $(this).remove(); 
-            });
-        }, 2000);*/
-
-    });
-</script>  
 @endsection

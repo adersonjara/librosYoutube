@@ -1,9 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                <a class="btn btn-primary shadow-none" data-toggle="tooltip" data-placement="top" title="Inicio" href="{{ route('libros.index') }}"> 
+                    <i class="fa fa-home fa-fw"></i> 
+                </a>
+            </div>
+        </div>
         <div class="col-md-12">
 
             <form  action="{{ route('libros.store') }}" method="POST" class="row g-3">
@@ -49,7 +55,7 @@
                     </small>
                 @enderror
               </div>
-              <div class="col-12">
+              <div class="col-md-12">
                 <button type="submit" class="btn btn-primary">Guardar</button>
               </div>
             </form>

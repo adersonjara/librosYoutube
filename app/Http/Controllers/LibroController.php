@@ -15,8 +15,7 @@ class LibroController extends Controller
     public function index()
     {
         $libros = Libro::orderBy('cod_libro', 'DESC')->paginate(10);
-        $idiomas = ['Español','Ingles','Chino'];
-        return view('libros.index', ['libros' => $libros,'idiomas' => $idiomas]);
+        return view('libros.index', ['libros' => $libros]);
     }
 
     /**
@@ -63,7 +62,7 @@ class LibroController extends Controller
      */
     public function show(Libro $libro)
     {
-        //
+        return view('libros.show',['libro' => $libro]);
     }
 
     /**
