@@ -11,6 +11,7 @@ class Categoria extends Model
 
     protected $table = 'categoria';
     protected $primaryKey = 'cod_categoria';
+    protected $fillable = ['titulo'];
 
     public function libros()
     {

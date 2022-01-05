@@ -37,7 +37,7 @@
                     <tbody>
                     @foreach ($libros as $libro)
                         <tr>
-                            <td>
+                            <td class="text-center">
                                 <a href="{{ route('libros.show', $libro) }}" class="btn btn-primary btn-sm shadow-none" 
                                         {{-- target="_blank" --}}
                                         data-toggle="tooltip" data-placement="top" title="Ver Libro">

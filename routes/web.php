@@ -28,7 +28,9 @@ Route::get('/', function () {
 
 Route::resource('libros', LibroController::class);
 
-Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias.index');
+Route::resource('categorias', CategoriaController::class);
+
+//Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias.index');
 
 Route::get('/autores', [AutorController::class, 'index'])->name('autores.index');
 

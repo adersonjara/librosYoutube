@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoriaController extends Controller
 {
@@ -14,7 +15,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $categorias = Categoria::paginate(10);
+        $categorias = Categoria::orderBy('cod_categoria', 'DESC')->paginate(10);
         return view('categorias.index', ['categorias' => $categorias]);
     }
 
@@ -25,7 +26,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('categorias.create');
     }
 
     /**
@@ -36,7 +37,14 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'titulo' => 'required|min:3|max:100|unique:categoria',
+        ]);
+
+        Categoria::create($request->all());
+
+        return redirect()->route('categorias.index')
+            ->with('success', 'Categoria registrada correctamente.');
     }
 
     /**
@@ -47,7 +55,7 @@ class CategoriaController extends Controller
      */
     public function show(Categoria $categoria)
     {
-        //
+        return view('categorias.show',['categoria' => $categoria]);
     }
 
     /**
@@ -58,7 +66,7 @@ class CategoriaController extends Controller
      */
     public function edit(Categoria $categoria)
     {
-        //
+        return view('categorias.edit', ['categoria' => $categoria]);
     }
 
     /**
@@ -70,7 +78,21 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, Categoria $categoria)
     {
-        //
+        $request->validate([
+            'titulo' => 'required|min:3|max:100|unique:categoria,titulo,'.$categoria->cod_categoria.',cod_categoria',
+        ]);
+
+        $categoria->fill($request->only([
+            'titulo',
+        ]));
+
+        if ($categoria->isClean()) {
+            return back()->with('statuswarning', 'Debe realizar al menos un cambio, para actualizar');
+        }
+
+        $categoria->update($request->all());
+
+        return back()->with('status', 'Categoria Actualizada Correctamente');
     }
 
     /**
@@ -81,6 +103,17 @@ class CategoriaController extends Controller
      */
     public function destroy(Categoria $categoria)
     {
-        //
+        if ($categoria)  
+        {
+            if ($categoria->delete()){
+
+            DB::statement('ALTER TABLE categoria AUTO_INCREMENT = '.(count(Categoria::all())+1).';');
+
+            return back()->with('status', 'Categoria Eliminada Correctamente');
+            
+            }   
+        }
+
+        
     }
 }
