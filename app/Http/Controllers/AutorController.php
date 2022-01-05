@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Autor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AutorController extends Controller
 {
@@ -14,7 +15,7 @@ class AutorController extends Controller
      */
     public function index()
     {
-        $autores = Autor::paginate(10);
+        $autores = Autor::orderBy('cod_autor', 'DESC')->paginate(10);
         return view('autores.index', ['autores' => $autores]);
     }
 
@@ -25,7 +26,8 @@ class AutorController extends Controller
      */
     public function create()
     {
-        //
+        $sexos = ['Masculino','Femenino'];
+        return view('autores.create', ['sexos' => $sexos]);
     }
 
     /**
@@ -36,7 +38,16 @@ class AutorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombres' => 'required|min:3|max:100',
+            'apellidos' => 'required|min:3|max:100',
+            'sexo' => 'required',
+        ]);
+
+        Autor::create($request->all());
+
+        return redirect()->route('autores.index')
+            ->with('success', 'Autor registrado correctamente.');
     }
 
     /**
@@ -45,9 +56,9 @@ class AutorController extends Controller
      * @param  \App\Models\Autor  $autor
      * @return \Illuminate\Http\Response
      */
-    public function show(Autor $autor)
+    public function show(Autor $autore)
     {
-        //
+        return view('autores.show',['autor' => $autore]);
     }
 
     /**
@@ -56,9 +67,11 @@ class AutorController extends Controller
      * @param  \App\Models\Autor  $autor
      * @return \Illuminate\Http\Response
      */
-    public function edit(Autor $autor)
+    public function edit(Autor $autore)
     {
-        //
+        //dd($autore);
+        $sexos = ['Masculino','Femenino'];
+        return view('autores.edit', ['autor' => $autore,'sexos' => $sexos]);
     }
 
     /**
@@ -68,9 +81,27 @@ class AutorController extends Controller
      * @param  \App\Models\Autor  $autor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Autor $autor)
+    public function update(Request $request, Autor $autore)
     {
-        //
+        $request->validate([
+            'nombres' => 'required|min:3|max:100',
+            'apellidos' => 'required|min:3|max:100',
+            'sexo' => 'required',
+        ]);
+
+        $autore->fill($request->only([
+            'nombres',
+            'apellidos',
+            'sexo'
+        ]));
+
+        if ($autore->isClean()) {
+            return back()->with('statuswarning', 'Debe realizar al menos un cambio, para actualizar');
+        }
+
+        $autore->update($request->all());
+
+        return back()->with('status', 'Autor Actualizado Correctamente');
     }
 
     /**
@@ -79,8 +110,17 @@ class AutorController extends Controller
      * @param  \App\Models\Autor  $autor
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Autor $autor)
+    public function destroy(Autor $autore)
     {
-        //
+        if ($autore)  
+        {
+            if ($autore->delete()){
+
+            DB::statement('ALTER TABLE autor AUTO_INCREMENT = '.(count(Autor::all())+1).';');
+
+            return back()->with('status', 'Autor Eliminado Correctamente');
+            
+            }   
+        }
     }
 }
