@@ -44,6 +44,8 @@ class AutorController extends Controller
             'sexo' => 'required',
         ]);
 
+        $request['nombrecompleto'] = $request->nombres.' '.$request->apellidos;
+        //dd($request->all());
         Autor::create($request->all());
 
         return redirect()->route('autores.index')

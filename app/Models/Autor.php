@@ -11,7 +11,7 @@ class Autor extends Model
 
     protected $table = 'autor';
     protected $primaryKey = 'cod_autor';
-    protected $fillable = ['nombres','apellidos','sexo'];
+    protected $fillable = ['nombres','apellidos','sexo','nombrecompleto'];
 
     public function libros()
     {

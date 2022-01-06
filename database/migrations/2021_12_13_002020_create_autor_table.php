@@ -17,6 +17,7 @@ class CreateAutorTable extends Migration
             $table->increments('cod_autor');
             $table->string('nombres',100);
             $table->string('apellidos',100);
+            $table->string('nombrecompleto',200);
             $table->char('sexo',1);
             $table->timestamps();
         });

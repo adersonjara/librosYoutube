@@ -16,6 +16,7 @@ class AutorFactory extends Factory
         return [
             'nombres' => $this->faker->firstName().' '.$this->faker->firstName() ,
             'apellidos' => $this->faker->lastName().' '.$this->faker->lastName(),
+            'nombrecompleto' => $this->faker->firstName().' '.$this->faker->firstName().' '.$this->faker->lastName().' '.$this->faker->lastName(),
             'sexo' => $this->faker->randomElement(['M','F']) // Masculino, Femenino
         ];
     }
