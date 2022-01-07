@@ -17,12 +17,12 @@ class CreateLibroTable extends Migration
             $table->increments('cod_libro');
             $table->string('titulo',100)->unique();
             $table->string('descripcion',200)->nullable();
-            $table->string('idioma',100);
+            // $table->string('idioma',100);
             $table->date('fecha_publicacion');
             $table->timestamps();
             
-            /*$table->integer('cod_categoria')->unsigned();
-            $table->foreign('cod_categoria')->references('cod_categoria')->on('categoria');*/
+            $table->unsignedInteger('cod_idioma')->nullable();
+            $table->foreign('cod_idioma')->references('cod_idioma')->on('idioma')->onDelete('cascade');
 
         });
     }
