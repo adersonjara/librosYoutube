@@ -22,7 +22,7 @@ class CreateLibroTable extends Migration
             $table->timestamps();
             
             $table->unsignedInteger('cod_idioma')->nullable();
-            $table->foreign('cod_idioma')->references('cod_idioma')->on('idioma')->onDelete('cascade');
+            $table->foreign('cod_idioma')->references('cod_idioma')->on('idioma');
 
         });
     }

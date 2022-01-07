@@ -22,7 +22,7 @@ class CreateAutorTable extends Migration
             $table->timestamps();
 
             $table->unsignedInteger('cod_sexo')->nullable();
-            $table->foreign('cod_sexo')->references('cod_sexo')->on('sexo')->onDelete('cascade');
+            $table->foreign('cod_sexo')->references('cod_sexo')->on('sexo');
 
         });
     }

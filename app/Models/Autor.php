@@ -17,4 +17,9 @@ class Autor extends Model
     {
         return $this->belongsToMany(Libro::class,'asignar_autores','cod_autor','cod_libro')->withTimestamps();
     }
+
+    public function sexo()
+    {
+        return $this->belongsTo(Sexo::class,'cod_sexo','cod_sexo');
+    }
 }

@@ -24,4 +24,9 @@ class Libro extends Model
         return $this->belongsToMany(Categoria::class,'asignar_categorias','cod_libro','cod_categoria')
         ->withTimestamps();
     }
+
+    public function idioma()
+    {
+        return $this->belongsTo(Idioma::class,'cod_idioma','cod_idioma');
+    }
 }
