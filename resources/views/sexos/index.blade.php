@@ -3,6 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row">
+        @if (session('statuswarning'))
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ session('statuswarning') }}
+            </div>
+        @endif
         @if (session('status'))
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 {{ session('status') }}

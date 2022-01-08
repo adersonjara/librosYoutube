@@ -105,13 +105,28 @@ class SexoController extends Controller
     {
         if ($sexo)  
         {
-            if ($sexo->delete()){
+            $eliminar = DB::table('autor as a')
+                        //->join('sexo as b', 'b.cod_sexo', '=', 'a.cod_sexo')
+                        ->where('a.cod_sexo', $sexo->cod_sexo)
+                        ->select(DB::raw('count(*) as numerosexo'))
+                        ->first();
 
-            DB::statement('ALTER TABLE sexo AUTO_INCREMENT = '.(count(Sexo::all())+1).';');
+//            $eliminar = DB::statement('SELECT COUNT(cod_sexo) FROM autor WHERE cod_sexo = '.$sexo->cod_sexo.';');
+            //dd($eliminar->numerosexo);
 
-            return back()->with('status', 'Sexo Eliminado Correctamente');
-            
-            }   
+            if($eliminar->numerosexo == 0){
+                if ($sexo->delete()){
+
+                DB::statement('ALTER TABLE sexo AUTO_INCREMENT = '.(count(Sexo::all())+1).';');
+
+                return back()->with('status', 'Sexo Eliminado Correctamente');
+                
+                } 
+            }else{
+                return back()->with('statuswarning', 'No se puede eliminar el sexo');
+            }
+
+              
         }
     }
 }
