@@ -52,7 +52,7 @@
                 </select>
                 @error('cod_sexo')
                     <small class="text-danger" role="alert">
-                        {{ $message }}
+                        Seleccione un Sexo
                     </small>
                 @enderror
               </div>

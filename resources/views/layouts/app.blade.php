@@ -49,6 +49,7 @@
                         <li class="nav-item">
                             <a class="nav-link  {{ request()->is('autores/*') || request()->is('autores') ? 'active' : '' }}" href="{{ route('autores.index') }}">{{ __('Autores') }}</a>
                         </li>
+                        {{-- https://github.com/Laraveles/spanish Para Cambiar el idioma de las respuestas --}}
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('categorias/*') || request()->is('categorias') ? 'active' : '' }}" href="{{ route('categorias.index') }}">{{ __('Categorías') }}</a>
                         </li>

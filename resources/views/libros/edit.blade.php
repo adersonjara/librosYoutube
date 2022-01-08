@@ -43,7 +43,7 @@
                 </select>
                 @error('cod_idioma')
                     <small class="text-danger" role="alert">
-                        {{ $message }}
+                        Seleccione el idioma
                     </small>
                 @enderror
               </div>

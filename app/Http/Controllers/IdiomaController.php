@@ -127,7 +127,7 @@ class IdiomaController extends Controller
                 
                 }   
             }else{
-                return back()->with('statuswarning', 'No se puede eliminar el sexo');
+                return back()->with('statuswarning', 'No se puede eliminar el idioma');
             }
 
         }
