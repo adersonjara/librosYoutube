@@ -25,13 +25,13 @@
               </div>
               <div class="col-md-6">
                 <label for="idioma" class="form-label">Idioma</label>
-                <select id="idioma" class="form-select shadow-none" name="idioma" value="{{ old('idioma') }}">
+                <select id="idioma" class="form-select shadow-none" name="cod_idioma" value="{{ old('idioma') }}">
                   <option value="" selected>Seleccionar...</option>
-                  <option value="{{ $idiomas[0] }}" {{ old('idioma') == $idiomas[0] ? 'selected' : '' }}>{{ $idiomas[0] }}</option>
-                  <option value="{{ $idiomas[1] }}" {{ old('idioma') == $idiomas[1] ? 'selected' : '' }}>{{ $idiomas[1] }}</option>
-                  <option value="{{ $idiomas[2] }}" {{ old('idioma') == $idiomas[2] ? 'selected' : '' }}>{{ $idiomas[2] }}</option>
+                  @foreach ($idiomas as $idioma)
+                        <option value="{{$idioma->cod_idioma}}" {{ old('idioma') == $idioma->cod_idioma ? 'selected' : '' }}>{{$idioma->descripcion}} </option>
+                  @endforeach
                 </select>
-                @error('idioma')
+                @error('cod_idioma')
                     <small class="text-danger" role="alert">
                         {{ $message }}
                     </small>

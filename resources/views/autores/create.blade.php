@@ -34,14 +34,15 @@
               </div>
               <div class="col-md-6">
                 <label for="sexo" class="form-label">Sexo</label>
-                <select id="sexo" class="form-select shadow-none" name="sexo" value="{{ old('sexo') }}">
+                <select id="sexo" class="form-select shadow-none" name="cod_sexo" value="{{ old('cod_sexo') }}">
                   <option value="" selected>Seleccionar...</option>
-                  <option value="M" {{ old('sexo') == $sexos[0] ? 'selected' : '' }}>{{ $sexos[0] }}</option>
-                  <option value="F" {{ old('sexo') == $sexos[1] ? 'selected' : '' }}>{{ $sexos[1] }}</option>
+                  @foreach ($sexos as $sexo)
+                        <option value="{{$sexo->cod_sexo}}" {{ old('cod_sexo') == $sexo->cod_sexo ? 'selected' : '' }}>{{$sexo->descripcion}} </option>
+                  @endforeach
                 </select>
-                @error('sexo')
+                @error('cod_sexo')
                     <small class="text-danger" role="alert">
-                        {{ $message }}
+                        Seleccione un Sexo
                     </small>
                 @enderror
               </div>

@@ -68,7 +68,7 @@
                                 {{ strlen($libro->descripcion) < 50 ? $libro->descripcion : substr($libro->descripcion, 0, 50) .'...'}}
                                 </em>
                             </td>
-                            <td scope="row">{{ $libro->idioma }}</td>
+                            <td scope="row">{{ $libro->idioma->descripcion }}</td>
                             <td scope="row">{{ date("d/m/Y", strtotime($libro->fecha_publicacion)); }}</td>
                         </tr>
                     @endforeach

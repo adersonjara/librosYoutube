@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Autor;
+use App\Models\Sexo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -26,7 +27,7 @@ class AutorController extends Controller
      */
     public function create()
     {
-        $sexos = ['Masculino','Femenino'];
+        $sexos = Sexo::all();
         return view('autores.create', ['sexos' => $sexos]);
     }
 
@@ -41,7 +42,7 @@ class AutorController extends Controller
         $request->validate([
             'nombres' => 'required|min:3|max:100',
             'apellidos' => 'required|min:3|max:100',
-            'sexo' => 'required',
+            'cod_sexo' => 'required',
         ]);
 
         $request['nombrecompleto'] = $request->nombres.' '.$request->apellidos;
@@ -72,7 +73,7 @@ class AutorController extends Controller
     public function edit(Autor $autore)
     {
         //dd($autore);
-        $sexos = ['Masculino','Femenino'];
+        $sexos = Sexo::all();
         return view('autores.edit', ['autor' => $autore,'sexos' => $sexos]);
     }
 
@@ -88,13 +89,14 @@ class AutorController extends Controller
         $request->validate([
             'nombres' => 'required|min:3|max:100',
             'apellidos' => 'required|min:3|max:100',
-            'sexo' => 'required',
+            'cod_sexo' => 'required',
         ]);
 
         $autore->fill($request->only([
             'nombres',
             'apellidos',
-            'sexo'
+            'sexo',
+            'cod_sexo'
         ]));
 
         if ($autore->isClean()) {

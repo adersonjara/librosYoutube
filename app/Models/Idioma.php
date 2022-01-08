@@ -16,6 +16,6 @@ class Idioma extends Model
 
     public function libro()
     {
-        return $this->hasMany(Libro::class,'cod_idioma','cod_idioma');
+        return $this->hasMany(Libro::class,'cod_libro','cod_libro');
     }
 }

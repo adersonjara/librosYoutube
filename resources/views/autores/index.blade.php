@@ -63,7 +63,7 @@
                             <td scope="row">{{ $autor->cod_autor }}</td>
                             <td scope="row">{{ $autor->nombres }}</td>
                             <td scope="row">{{ $autor->apellidos }}</td>
-                            <td scope="row">{{ $autor->sexo }}</td>
+                            <td scope="row">{{ $autor->sexo->descripcion }}</td>
                         </tr>
                     @endforeach
                     </tbody>

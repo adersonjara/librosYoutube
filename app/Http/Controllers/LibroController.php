@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Autor;
 use App\Models\Categoria;
+use App\Models\Idioma;
 use App\Models\Libro;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,7 @@ class LibroController extends Controller
      */
     public function create()
     {
-        $idiomas = ['Español','Ingles','Chino'];
+        $idiomas = Idioma::all();
 
         $categorias = Categoria::pluck('titulo','cod_categoria');
         $autores = Autor::pluck('nombrecompleto','cod_autor');
@@ -47,7 +48,7 @@ class LibroController extends Controller
         //dd($request->fecha_publicacion);
         $request->validate([
             'titulo' => 'required|min:3|max:100|unique:libro',
-            'idioma' => 'required',
+            'cod_idioma' => 'required',
             'descripcion' => 'required|min:3|max:200',
             'fecha_publicacion' => 'required|date',
             'categorias' => 'required',
@@ -86,7 +87,7 @@ class LibroController extends Controller
      */
     public function edit(Libro $libro)
     {
-        $idiomas = ['Español','Ingles','Chino'];
+        $idiomas = Idioma::all();
         //dd($libro);
         $categorias = Categoria::pluck('titulo','cod_categoria');
         $autores = Autor::pluck('nombrecompleto','cod_autor');
@@ -103,9 +104,10 @@ class LibroController extends Controller
      */
     public function update(Request $request, Libro $libro)
     {
+
         $request->validate([
             'titulo' => 'required|min:3|max:100|unique:libro,titulo,'.$libro->cod_libro.',cod_libro',
-            'idioma' => 'required',
+            'cod_idioma' => 'required',
             'descripcion' => 'required|max:200|',
             'fecha_publicacion' => 'required|date',
             'categorias' => 'required',
@@ -116,7 +118,8 @@ class LibroController extends Controller
             'titulo',
             'idioma',
             'descripcion',
-            'fecha_publicacion'
+            'fecha_publicacion',
+            'cod_idioma'
         ]));
 
         if ($libro->isClean()) {

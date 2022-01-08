@@ -11,7 +11,7 @@ class Libro extends Model
 
     protected $table = 'libro';
     protected $primaryKey = 'cod_libro';
-    protected $fillable = ['titulo', 'descripcion','idioma','fecha_publicacion'];
+    protected $fillable = ['titulo', 'descripcion','fecha_publicacion','cod_idioma'];
 
     public function autores()
     {
