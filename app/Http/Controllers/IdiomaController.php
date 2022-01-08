@@ -103,15 +103,33 @@ class IdiomaController extends Controller
      */
     public function destroy(Idioma $idioma)
     {
+
+        // Explicación del First
+        /*
+            SELECT count(cod_idioma) FROM `libro` WHERE cod_idioma=1 LIMIT 1
+
+        */
         if ($idioma)  
         {
-            if ($idioma->delete()){
+            $eliminar = DB::table('libro as l')
+                        //->join('sexo as b', 'b.cod_sexo', '=', 'a.cod_sexo')
+                        ->where('l.cod_idioma', $idioma->cod_idioma)
+                        ->select(DB::raw('count(*) as numeroidioma'))
+                        ->first();
+                        
+            if($eliminar->numeroidioma == 0){
 
-            DB::statement('ALTER TABLE idioma AUTO_INCREMENT = '.(count(Idioma::all())+1).';');
+                if ($idioma->delete()){
 
-            return back()->with('status', 'Idioma Eliminado Correctamente');
-            
-            }   
+                DB::statement('ALTER TABLE idioma AUTO_INCREMENT = '.(count(Idioma::all())+1).';');
+
+                return back()->with('status', 'Idioma Eliminado Correctamente');
+                
+                }   
+            }else{
+                return back()->with('statuswarning', 'No se puede eliminar el sexo');
+            }
+
         }
 
     }
