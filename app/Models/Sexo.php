@@ -11,6 +11,7 @@ class Sexo extends Model
 
     protected $table = 'sexo';
     protected $primaryKey = 'cod_sexo';
+    protected $fillable = ['descripcion'];
 
     public function libro()
     {

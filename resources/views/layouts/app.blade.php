@@ -52,6 +52,12 @@
                         <li class="nav-item">
                             <a class="nav-link  {{ request()->is('autores/*') || request()->is('autores') ? 'active' : '' }}" href="{{ route('autores.index') }}">{{ __('Autores') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link  {{ request()->is('idiomas/*') || request()->is('idiomas') ? 'active' : '' }}" href="{{ route('idiomas.index') }}">{{ __('Idiomas') }}</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link  {{ request()->is('sexos/*') || request()->is('sexos') ? 'active' : '' }}" href="{{ route('sexos.index') }}">{{ __('Sexos') }}</a>
+                        </li>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))

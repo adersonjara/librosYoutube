@@ -12,6 +12,8 @@ class Idioma extends Model
     protected $table = 'idioma';
     protected $primaryKey = 'cod_idioma';
 
+    protected $fillable = ['descripcion'];
+
     public function libro()
     {
         return $this->hasMany(Libro::class,'cod_idioma','cod_idioma');

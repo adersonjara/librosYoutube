@@ -1,10 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\LibroController;
-use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\AutorController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\IdiomaController;
+use App\Http\Controllers\LibroController;
+use App\Http\Controllers\SexoController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,10 @@ Route::resource('libros', LibroController::class);
 Route::resource('categorias', CategoriaController::class);
 
 Route::resource('autores', AutorController::class);
+
+Route::resource('idiomas', IdiomaController::class);
+
+Route::resource('sexos', SexoController::class);
 
 //Route::get('/categorias', [CategoriaController::class, 'index'])->name('categorias.index');
 
