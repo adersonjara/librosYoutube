@@ -19,9 +19,10 @@ class CreateAutorTable extends Migration
             $table->string('apellidos',100);
             $table->string('nombrecompleto',200);
             //$table->char('sexo',1);
+             $table->unsignedInteger('cod_sexo')->nullable();
             $table->timestamps();
 
-            $table->unsignedInteger('cod_sexo')->nullable();
+           
             $table->foreign('cod_sexo')->references('cod_sexo')->on('sexo');
 
         });

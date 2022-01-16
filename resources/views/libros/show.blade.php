@@ -17,7 +17,7 @@
               </div>
               <div class="card-body text-center">
                 <h5 class="card-title"><b>{{ $libro->titulo }}</b></h5>
-                <p class="card-text">{{ $libro->descripcion }}<br><b>{{ $libro->idioma }}</b></p>
+                <p class="card-text">{{ $libro->descripcion }}<br><b>{{ $libro->idioma->descripcion }}</b></p>
               </div>
               <div class="card-footer text-muted text-center">
                 {{ date("d/m/Y", strtotime($libro->fecha_publicacion)); }}

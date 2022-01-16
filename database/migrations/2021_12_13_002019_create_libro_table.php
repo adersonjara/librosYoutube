@@ -19,9 +19,10 @@ class CreateLibroTable extends Migration
             $table->string('descripcion',200)->nullable();
             // $table->string('idioma',100);
             $table->date('fecha_publicacion');
+            $table->unsignedInteger('cod_idioma')->nullable();
             $table->timestamps();
             
-            $table->unsignedInteger('cod_idioma')->nullable();
+            
             $table->foreign('cod_idioma')->references('cod_idioma')->on('idioma');
 
         });
