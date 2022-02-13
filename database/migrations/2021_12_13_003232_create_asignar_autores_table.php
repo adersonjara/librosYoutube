@@ -13,13 +13,13 @@ class CreateAsignarAutoresTable extends Migration
      */
     public function up()
     {
-        Schema::create('asignar_autores', function (Blueprint $table) {
-            $table->id();
+        Schema::create('lib_asignar_autores', function (Blueprint $table) {
+            //$table->id();
             $table->unsignedInteger('cod_libro');
             $table->foreign('cod_libro')->references('cod_libro')->on('libro')->onDelete('cascade');
             $table->unsignedInteger('cod_autor');
             $table->foreign('cod_autor')->references('cod_autor')->on('autor')->onDelete('cascade');
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 

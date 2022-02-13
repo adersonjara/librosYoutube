@@ -13,10 +13,10 @@ class CreateIdiomaTable extends Migration
      */
     public function up()
     {
-        Schema::create('idioma', function (Blueprint $table) {
+        Schema::create('lib_idioma', function (Blueprint $table) {
             $table->increments('cod_idioma');
             $table->string('descripcion',100)->unique();
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 

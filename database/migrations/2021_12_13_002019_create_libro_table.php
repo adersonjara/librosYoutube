@@ -13,14 +13,14 @@ class CreateLibroTable extends Migration
      */
     public function up()
     {
-        Schema::create('libro', function (Blueprint $table) {
+        Schema::create('lib_libro', function (Blueprint $table) {
             $table->increments('cod_libro');
             $table->string('titulo',100)->unique();
             $table->string('descripcion',200)->nullable();
             // $table->string('idioma',100);
             $table->date('fecha_publicacion');
             $table->unsignedInteger('cod_idioma')->nullable();
-            $table->timestamps();
+            //$table->timestamps();
             
             
             $table->foreign('cod_idioma')->references('cod_idioma')->on('idioma');

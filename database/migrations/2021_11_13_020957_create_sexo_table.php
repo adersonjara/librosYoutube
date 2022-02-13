@@ -13,10 +13,10 @@ class CreateSexoTable extends Migration
      */
     public function up()
     {
-        Schema::create('sexo', function (Blueprint $table) {
+        Schema::create('lib_sexo', function (Blueprint $table) {
             $table->increments('cod_sexo');
             $table->string('descripcion',100)->unique();
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 

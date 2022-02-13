@@ -13,14 +13,14 @@ class CreateAutorTable extends Migration
      */
     public function up()
     {
-        Schema::create('autor', function (Blueprint $table) {
+        Schema::create('lib_autor', function (Blueprint $table) {
             $table->increments('cod_autor');
             $table->string('nombres',100);
             $table->string('apellidos',100);
             $table->string('nombrecompleto',200);
             //$table->char('sexo',1);
              $table->unsignedInteger('cod_sexo')->nullable();
-            $table->timestamps();
+            //$table->timestamps();
 
            
             $table->foreign('cod_sexo')->references('cod_sexo')->on('sexo');

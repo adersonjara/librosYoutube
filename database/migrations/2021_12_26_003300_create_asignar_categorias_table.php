@@ -13,13 +13,13 @@ class CreateAsignarCategoriasTable extends Migration
      */
     public function up()
     {
-        Schema::create('asignar_categorias', function (Blueprint $table) {
-            $table->id();
+        Schema::create('lib_asignar_categorias', function (Blueprint $table) {
+            //$table->id();
             $table->unsignedInteger('cod_libro');
             $table->foreign('cod_libro')->references('cod_libro')->on('libro')->onDelete('cascade');
             $table->unsignedInteger('cod_categoria');
             $table->foreign('cod_categoria')->references('cod_categoria')->on('categoria')->onDelete('cascade');
-            $table->timestamps();
+            //$table->timestamps();
         });
     }
 

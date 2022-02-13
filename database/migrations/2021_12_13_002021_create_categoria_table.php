@@ -13,10 +13,10 @@ class CreateCategoriaTable extends Migration
      */
     public function up()
     {
-        Schema::create('categoria', function (Blueprint $table) {
+        Schema::create('lib_categoria', function (Blueprint $table) {
             $table->increments('cod_categoria');
             $table->string('titulo',100)->unique();
-            $table->timestamps();
+            //$table->timestamps();
             
             //$table->integer('cod_libro')->unsigned();
             //$table->foreign('cod_libro')->references('cod_libro')->on('libro');
