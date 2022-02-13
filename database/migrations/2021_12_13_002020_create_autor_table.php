@@ -23,7 +23,7 @@ class CreateAutorTable extends Migration
             //$table->timestamps();
 
            
-            $table->foreign('cod_sexo')->references('cod_sexo')->on('sexo');
+            $table->foreign('cod_sexo')->references('cod_sexo')->on('lib_sexo');
 
         });
     }

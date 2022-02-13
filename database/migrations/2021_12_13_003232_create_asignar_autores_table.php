@@ -16,9 +16,9 @@ class CreateAsignarAutoresTable extends Migration
         Schema::create('lib_asignar_autores', function (Blueprint $table) {
             //$table->id();
             $table->unsignedInteger('cod_libro');
-            $table->foreign('cod_libro')->references('cod_libro')->on('libro')->onDelete('cascade');
+            $table->foreign('cod_libro')->references('cod_libro')->on('lib_libro')->onDelete('cascade');
             $table->unsignedInteger('cod_autor');
-            $table->foreign('cod_autor')->references('cod_autor')->on('autor')->onDelete('cascade');
+            $table->foreign('cod_autor')->references('cod_autor')->on('lib_autor')->onDelete('cascade');
             //$table->timestamps();
         });
     }

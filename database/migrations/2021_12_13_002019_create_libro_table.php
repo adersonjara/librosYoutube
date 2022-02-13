@@ -23,7 +23,7 @@ class CreateLibroTable extends Migration
             //$table->timestamps();
             
             
-            $table->foreign('cod_idioma')->references('cod_idioma')->on('idioma');
+            $table->foreign('cod_idioma')->references('cod_idioma')->on('lib_idioma');
 
         });
     }

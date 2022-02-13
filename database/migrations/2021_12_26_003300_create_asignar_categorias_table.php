@@ -16,9 +16,9 @@ class CreateAsignarCategoriasTable extends Migration
         Schema::create('lib_asignar_categorias', function (Blueprint $table) {
             //$table->id();
             $table->unsignedInteger('cod_libro');
-            $table->foreign('cod_libro')->references('cod_libro')->on('libro')->onDelete('cascade');
+            $table->foreign('cod_libro')->references('cod_libro')->on('lib_libro')->onDelete('cascade');
             $table->unsignedInteger('cod_categoria');
-            $table->foreign('cod_categoria')->references('cod_categoria')->on('categoria')->onDelete('cascade');
+            $table->foreign('cod_categoria')->references('cod_categoria')->on('lib_categoria')->onDelete('cascade');
             //$table->timestamps();
         });
     }
